@@ -1,0 +1,69 @@
+/* Đặt tổng thể của form */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  }
+  
+  /* Đặt cho các nhãn */
+  .form-container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  /* Đặt cho các trường nhập liệu */
+  .form-container input[type="date"],
+  .form-container select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+  }
+  
+  /* Đặt cho thông báo lỗi */
+  .error {
+    color: red;
+    font-size: 0.875em;
+    margin-top: -8px;
+    margin-bottom: 16px;
+  }
+  
+  /* Đặt cho nút gửi */
+  .form-container button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hiệu ứng hover cho nút gửi */
+  .form-container button:hover {
+    background-color: #0056b3;
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    padding: 20px;  
+    border-radius: 5px;
+}
+
+.input-field {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+  

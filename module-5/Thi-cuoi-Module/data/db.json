@@ -1,0 +1,134 @@
+{
+  "baiHats": [
+    {
+      "id": 1,
+      "name": "Khó vẽ nụ cười",
+      "caSi": "Dat G",
+      "nhacSi": 100,
+      "thoiGianPhat": "05:00",
+      "soLuotYeuThich": 23,
+      "trangThai": {
+        "id": 1,
+        "name": "Công Khai"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Nơi này có anh",
+      "caSi": "Sơn tùng MTP",
+      "nhacSi": 100,
+      "thoiGianPhat": "05:00",
+      "soLuotYeuThich": 23,
+      "trangThai": {
+        "id": 1,
+        "name": "Công Khai"
+      }
+    },
+    {
+      "name": "Thu cuối",
+      "caSi": "Hữu xuân",
+      "nhacSi": "phương trân",
+      "thoiGianPhat": "23123",
+      "soLuotYeuThich": 0,
+      "trangThai": {
+        "id": 2,
+        "name": "Công khai"
+      },
+      "id": 3
+    },
+    {
+      "name": "hung",
+      "caSi": "Hữu xuân",
+      "nhacSi": "phương trân",
+      "thoiGianPhat": "23123",
+      "soLuotYeuThich": 0,
+      "trangThai": {
+        "id": 2,
+        "name": "Công khai"
+      },
+      "id": 4
+    },
+    {
+      "name": "234",
+      "caSi": "3123",
+      "nhacSi": "123",
+      "thoiGianPhat": "123",
+      "soLuotYeuThich": 0,
+      "trangThai": {
+        "id": 2,
+        "name": "Công khai"
+      },
+      "id": 5
+    },
+    {
+      "name": "123",
+      "caSi": "123",
+      "nhacSi": "123",
+      "thoiGianPhat": "12:12",
+      "soLuotYeuThich": 0,
+      "trangThai": {
+        "id": 2,
+        "name": "Công khai"
+      },
+      "id": 6
+    },
+    {
+      "name": "trần dương hữu xuân",
+      "caSi": "Hữu xuân",
+      "nhacSi": "phương trân",
+      "thoiGianPhat": "12:12",
+      "soLuotYeuThich": 0,
+      "trangThai": {
+        "id": 2,
+        "name": "Công khai"
+      },
+      "id": 7
+    },
+    {
+      "name": "trần dương hữu xuân",
+      "caSi": "Hữu xuân",
+      "nhacSi": "phương trân",
+      "thoiGianPhat": "12:12",
+      "soLuotYeuThich": 0,
+      "trangThai": {
+        "id": 2,
+        "name": "Công khai"
+      },
+      "id": 8
+    },
+    {
+      "name": "trần dương hữu xuân",
+      "caSi": "Hữu xuân",
+      "nhacSi": "phương trân",
+      "thoiGianPhat": "12:12",
+      "soLuotYeuThich": 0,
+      "trangThai": {
+        "id": 2,
+        "name": "Công khai"
+      },
+      "id": 9
+    },
+    {
+      "name": "trần dương hữu xuân",
+      "caSi": "xuân",
+      "nhacSi": "phương trân",
+      "thoiGianPhat": "12:12",
+      "soLuotYeuThich": 0,
+      "trangThai": {
+        "id": 2,
+        "name": "Công khai"
+      },
+      "id": 10
+    }
+  ],
+  "trangThais": [
+    {
+      "id": 1,
+      "name": "Công khai"
+    },
+    {
+      "id": 2,
+      "name": "Lưu Trữ"
+    }
+  ]
+}

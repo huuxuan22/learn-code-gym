@@ -1,0 +1,15 @@
+{
+    "students": [
+        {"id": 1, "age": 23, "name": "xuan", "point":10,"class": {"id":1,"name":"12/2"}},
+        {"id": 2, "age": 23, "name": "xuan", "point":10,"class": {"id":1,"name":"12/2"}},
+        {"id": 3, "age": 23, "name": "xuan", "point":10,"class": {"id":2,"name":"12/2"}},
+        {"id": 4, "age": 23, "name": "xuan", "point":10,"class": {"id":2,"name":"12/2"}},
+        {"id": 5, "age": 23, "name": "xuan", "point":10,"class": {"id":3,"name":"12/2"}}
+    ],
+    "class": [
+        {"id":1,"name":"12/2"},
+        {"id":2,"name":"12/3"},
+        {"id":3,"name":"12/4"}
+    ]
+    
+}

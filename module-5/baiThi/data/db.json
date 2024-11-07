@@ -1,0 +1,39 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "maSanPham": "PROD-0001",
+      "name": "a title",
+      "gia": 100,
+      "soLuong": 12,
+      "ngayNhap": "12/02/2004",
+      "type": {
+        "id": 1,
+        "name": "Dược phẩm"
+      }
+    },
+    {
+      "id": "2",
+      "maSanPham": "PROD-0002",
+      "name": "a title",
+      "gia": 100,
+      "soLuong": 12,
+      "ngayNhap": "12/02/2004",
+      "type": {
+        "id": 1,
+        "name": "Dược phẩm"
+      }
+    }
+    
+  ],
+  "types": [
+    {
+      "id": "1",
+      "name": "Dược phẩm"
+    },
+    {
+      "id": "2",
+      "name": "Vật lý trị liệu"
+    }
+  ]
+}

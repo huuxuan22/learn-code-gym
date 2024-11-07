@@ -1,0 +1,68 @@
+{
+  "student": [
+    {
+      "id": "1",
+      "age": 12,
+      "name": "Cuong",
+      "point": 23,
+      "class": {
+        "id": 1,
+        "className": "12/2"
+      }
+    },
+    {
+      "id": "2",
+      "age": 12,
+      "name": "xuan",
+      "point": 23,
+      "class": {
+        "id": 1,
+        "className": "12/3"
+      }
+    },
+    {
+      "id": "3",
+      "age": 12,
+      "name": "Khanh",
+      "point": 23,
+      "class": {
+        "id": 2,
+        "className": "12/3"
+      }
+    },
+    {
+      "id": "e329",
+      "class": {
+        "id": "3",
+        "className": "12/4"
+      },
+      "point": 2,
+      "age": 123,
+      "name": "123"
+    },
+    {
+      "id": "4e99",
+      "class": {
+        "id": "3",
+        "className": "12/4"
+      },
+      "point": 1,
+      "age": 789,
+      "name": "789"
+    }
+  ],
+  "class": [
+    {
+      "id": "1",
+      "className": "12/2"
+    },
+    {
+      "id": "2",
+      "className": "12/3"
+    },
+    {
+      "id": "3",
+      "className": "12/4"
+    }
+  ]
+}

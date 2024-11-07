@@ -1,0 +1,29 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<style>
+.divider {
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.divider::before, .divider::after {
+  flex: 1;
+  content: '';
+  padding: 3px;
+  background-color: red;
+  margin: 5px;
+}
+</style>
+</head>
+<body>
+
+<h2>Text Divider</h2>
+
+<div class="divider">Lorem Ipsum</div>
+<div class="divider">OR</div>
+<div class="divider">AND</div>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "maSanPham": "PROD-0001",
+      "name": "a title",
+      "gia": 100,
+      "soLuong": 12,
+      "ngayNhap": "12/02/2004",
+      "type": {
+        "id": 1,
+        "name": "Dược phẩm"
+      }
+    },
+    {
+      "id": 2,
+      "maSanPham": "PROD-0002",
+      "name": "a title",
+      "gia": 100,
+      "soLuong": 12,
+      "ngayNhap": "12/02/2004",
+      "type": {
+        "id": 1,
+        "name": "Dược phẩm"
+      }
+    },
+    {
+      "id": 3,
+      "maSanPham": "PROD-0003",
+      "name": "Hữu xuân",
+      "gia": 100,
+      "soLuong": 12,
+      "ngayNhap": "12/02/2004",
+      "type": {
+        "id": 1,
+        "name": "Dược phẩm"
+      }
+    },
+    {
+      "id": 4,
+      "maSanPham": "PROD-0003",
+      "name": "Hữu xuân",
+      "gia": 100,
+      "soLuong": 12,
+      "ngayNhap": "12/02/2004",
+      "type": {
+        "id": 2,
+        "name": "Vật lý trị liệu"
+      }
+    },
+    {
+      "id": 5,
+      "maSanPham": "PROD-0003",
+      "name": "Hữu xuân",
+      "gia": 100,
+      "soLuong": 12,
+      "ngayNhap": "12/02/2004",
+      "type": {
+        "id": 3,
+        "name": "mát xa"
+      }
+    },
+    {
+      "name": "trần dương hữu xuân",
+      "maSanPham": "PROD-0001",
+      "gia": "234",
+      "soLuong": "12312",
+      "date": "2024-09-13",
+      "type": {
+        "id": 2,
+        "name": "Vật lý trị liệu"
+      },
+      "id": 6
+    },
+    {
+      "name": "Ngô thị như quydnhf",
+      "maSanPham": "PROD-0010",
+      "gia": "123123",
+      "soLuong": "543534",
+      "date": "2024-09-13",
+      "type": {
+        "id": 2,
+        "name": "Vật lý trị liệu"
+      },
+      "id": 7,
+      "ngayNhap": "2024-09-13"
+    },
+    {
+      "name": "trần dương hữu xuân",
+      "maSanPham": "PROD-0001",
+      "gia": "123",
+      "soLuong": "12312",
+      "ngayNhap": "2024-09-13",
+      "type": {
+        "id": 1,
+        "name": "Dược phẩm"
+      },
+      "id": 8
+    },
+    {
+      "name": "trần dương hữu xuân",
+      "maSanPham": "PROD-0001",
+      "gia": "234",
+      "soLuong": "12312",
+      "ngayNhap": "2024-09-13",
+      "type": {
+        "id": 2,
+        "name": "Vật lý trị liệu"
+      },
+      "id": 9
+    },
+    {
+      "name": "Phạm phương trân",
+      "maSanPham": "PROD-0002",
+      "gia": "123123",
+      "soLuong": "12312",
+      "ngayNhap": "2024-09-13",
+      "type": {
+        "id": 2,
+        "name": "Vật lý trị liệu"
+      },
+      "id": 10
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "name": "Dược phẩm"
+    },
+    {
+      "id": 2,
+      "name": "Vật lý trị liệu"
+    },
+    {
+      "id": 3,
+      "name": "mát xa"
+    }
+  ]
+}
