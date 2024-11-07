@@ -1,0 +1,40 @@
+
+
+h2 {
+    font-family: poppins, sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 3vh;
+    color: #c2e8ff;
+}
+
+
+
+button:hover {
+    background-color: #192c44;
+}
+
+
+
+.body-box {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* The pop up form - hidden by default */
+
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+
+.form-container {
+    display: block;
+    max-width: 300px;
+    padding: 10px;
+}

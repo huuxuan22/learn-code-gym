@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="form-add.css">
+</head>
+
+<body>
+    <h1 style="text-align: center;">DANH SACH SINH VIEN</h1>
+
+    <!-- nút thêm mới  -->
+    <div class="body-box">
+        <button id="addBook" class="btn btn-primary" button onclick="openForm()">
+            Thêm mới
+        </button>
+    </div>
+
+    <!-- form dùng để thêm mới học sinh -->
+    <div id="popUpForm" class="form-popup">
+        <form action="example.com/path" class="form-container" id="popUpForm">
+            <input type="text" id="title" placeholder="Tên sinh viên">
+            <input type="text" id="author" placeholder="mã sinh viên">
+            <input type="text" id="pages" placeholder="Căn cước công dân">
+            <input type="text" placeholder="Số điện thoại">
+            <input type="text" placeholder="Địa chỉ">
+            <input type="text" placeholder="Ngày sinh">
+            <input type="text" placeholder="Số điện thoại">
+            <input type="submit" value="Thêm mới">
+        </form>
+    </div>
+
+    <!-- table chứa danh sách -->
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>tên sinh viên </th>
+                <th>Ngày Sinh</th>
+                <th>Căn cước công dân</th>
+                <th>Số điện thoại</th>
+                <th>Mã sinh viên</th>
+                <th>Địa chỉ</th>
+                <th>Ngày sinh</th>
+                <th>Số phòng</th>
+                <th>Cập nhật</th>
+                <th>XÓA</th>
+            </tr>
+        </thead>
+        <tbody id="body">
+
+        </tbody>
+    </table>
+    <!-- đây là modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc chắn là xóa sinh viên <span id="nameStudent"></span> ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        showList();
+    })
+    function showList() {
+        $.ajax({
+            // url handle mapping
+            url: 'http://localhost:8080/api',
+            // http method
+            method: 'GET',
+            // dữ liệu nhận từ server
+            dataType: 'JSON',
+            
+            success: function (data) {
+                let str = []
+                for (let i = 0; i < data.content.length; i++) {
+                    str.push(`<tr>
+                        <td>${i + 1}</td>
+                        <td>${data.content[i].id}</td>     
+                        <td>${data.content[i].studentId}</td>     
+                        <td>${data.content[i].studentName}</td>     
+                        <td>${data.content[i].citizenshipId}</td>     
+                        <td>${data.content[i].address}</td>     
+                        <td>${data.content[i].numberPhone}</td>     
+                        <td>${data.content[i].birthday}</td>     
+                        <td>${data.content[i].room.roomName}</td> 
+                        <td>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop 
+                            onclick="send(${data.content[i].id},${data.content[i].studentName})">
+                                Xóa
+                            </button>    
+                        </td> 
+                        
+                        <td>
+                            <td>
+                                <button type="button" id="" class="btn btn-primary">
+                                    Cập nhật
+                                </button>    
+                            </td>    
+                        </td>
+                        </tr>`)
+                }
+                document.getElementById("body").innerHTML = str.join()
+            }
+        })
+    }
+    const popUpForm = document.getElementById("popUpForm");
+    var button = document.getElementById("addBook");
+
+    button.addEventListener("click", function openForm() {
+        document.getElementById("popUpForm").style.display = "block";
+        // alert("tôi là trần dương hữu xuân")
+    })
+
+</script>
+
+</html>

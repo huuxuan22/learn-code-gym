@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous">
+    </script>
+    <style>
+        .alert {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            max-width: 300px; /* Điều chỉnh kích thước tối đa của alert box */
+            opacity: 0; /* Ẩn alert ban đầu */
+            transition: opacity 0.5s ease; /* Thêm hiệu ứng khi alert hiển thị */
+            z-index: 9999; /* Đảm bảo alert hiển thị trên các phần tử khác */
+        }
+
+        .alert.show {
+            opacity: 1; /* Hiển thị alert */
+        }
+        .alert1 {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            max-width: 300px; /* Điều chỉnh kích thước tối đa của alert box */
+            opacity: 0; /* Ẩn alert ban đầu */
+            transition: opacity 0.5s ease; /* Thêm hiệu ứng khi alert hiển thị */
+            z-index: 9999; /* Đảm bảo alert hiển thị trên các phần tử khác */
+        }
+        .alert1.show {
+            opacity: 1; /* Hiển thị alert */
+        }
+        .btn span.icon {
+            background: url(https://th.bing.com/th?id=OIP.npfwjjV1CqXDZdjgwr8MbgHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.1&pid=3.1&rm=2) no-repeat;
+            float: left;
+            width: 10px;
+            height: 40px;
+        }
+        button.btn.add::before {
+            font-family: fontAwesome;
+            content: "\f067\00a0";
+        }
+
+        button.btn.edit::before {
+            font-family: fontAwesome;
+            content: "\f044\00a0";
+        }
+
+        button.btn.save::before {
+            font-family: fontAwesome;
+            content: "\f00c\00a0";
+        }
+
+        button.btn.cancel::before {
+            font-family: fontAwesome;
+            content: "\f00d\00a0";
+        }
+    </style>
+
+</head>
+<body>
+<input type="hidden">
+<div class="row">
+    <div class="col-7"></div>
+    <div class="col-2">
+        <form style="float: right" th:action="@{addNew}" method="get">
+            <button type="submit" class="btn add  btn-outline-success">Thêm mới</button>
+        </form>
+    </div>
+    <div class="col-3">
+        <form class="d-flex" th:action="@{/search/{valuesSearch}}" method="post" role="search">
+            <input class="form-control me-2" type="search" id="valuesSearch" name="valuesSearch" th:value="${valuesSearch}" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+
+
+<div th:if="${mess}" id="alert" class="alert alert-primary show" role="alert">
+    Bạn đã xóa thành công 1 dịch vụ
+</div>
+<div th:if="${msg}" id="alert1" class="alert alert-primary show" role="alert">
+    Bạn đã thêm mới thành công 1 dịch vụ
+</div>
+
+<!--int id, String name, int area, Double cost, int peopleMax, FacilityType facilityType, RentType rentType, String standardRoom, String descriptionOtherConvenience, Double poolArea, int numberOfFloors, String facilityFree-->
+<table class="table table-hover">
+    <h1 style="text-align: center">SERVICE MANAGEMENT</h1>
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Tên dịch vụ</th>
+        <th>Diện tích</th>
+        <th>Số người tối đa</th>
+        <th>giá cả</th>
+        <th>loại dịch vụ</th>
+        <th>Kiểu thuê</th>
+        <th>Tiêu chuẩn Phòng</th>
+        <th>Mô tien ích khác</th>
+        <th>Diện tích hồ bơi</th>
+        <th>Số tầng</th>
+        <th>Các phí dịch vụ đi kèm</th>
+        <th> Sửa </th>
+        <th> Xóa </th>
+    </tr>
+    </thead>
+    <tr th:if="${list.isEmpty()}">
+        <td><h3 style="text-align:center;width: 100%" >Không có trong danh sách</h3></td>
+    </tr>
+    <tbody>
+    <tr th:object="${facility}" th:each="facility, loop : ${list}">
+        <td th:text="${loop.count}"></td>
+        <td th:text="${facility.name}"></td>
+        <td th:text="${facility.area}"></td>
+        <td th:text="${facility.cost}"></td>
+        <td th:text="${facility.facilityType.getName()}"></td>
+        <td th:text="${facility.rentType.name}"></td>
+        <td th:text="${facility.peopleMax}"></td>
+        <td th:text="${facility.standardRoom}"></td>
+        <td th:text="${facility.descriptionOtherConvenience}"></td>
+        <td th:text="${facility.poolArea}"></td>
+        <td th:text="${facility.numberOfFloors}"></td>
+        <td th:text="${facility.facilityFree}"></td>
+        <td>
+                <button type="button" th:data-id="${facility.id}" th:data-name="${facility.name}" th:attr="onclick='prepareDelete(\'' + ${facility.id} + '\', \'' + ${facility.name} + '\')'" class="btn btn-outline-danger"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Delete
+                </button>
+        </td>
+        <td>
+            <form th:action="@{/update/{id}(id=${facility.getId()})}" method="get">
+                <button type="submit" class="btn  btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Update
+                </button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<nav aria-label="Page navigation" th:if="${!list.isEmpty()}">
+    <ul class="pagination">
+        <li class="page-item" th:classappend="${currentPage == 0 ? 'disabled' : ''}">
+            <a class="page-link" th:href="@{/(page=0)}">First</a>
+        </li>
+        <li class="page-item" th:classappend="${currentPage == 0 ? 'disabled' : ''}">
+            <a class="page-link" th:href="@{/(page=${currentPage - 1})}">Previous</a>
+        </li>
+        <li class="page-item" th:each="i : ${#numbers.sequence(0, list.totalPages -1)}"
+            th:classappend="${currentPage == i ? 'active' : ''}">
+            <a class="page-link" th:href="@{/(page=${i},valueSearch=${searchValue})}" th:text="${i + 1}"></a>
+        </li>
+        <li class="page-item" th:classappend="${currentPage == list.totalPages - 1 ? 'disabled' : ''}">
+            <a class="page-link" th:href="@{/(page=${currentPage + 1})}">Next</a>
+        </li>
+        <li class="page-item" th:classappend="${currentPage == list.totalPages - 1 ? 'disabled' : ''}">
+            <a class="page-link" th:href="@{/(page=${list.totalPages - 1})}">Last</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form th:action="@{/delete/}" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">FURAMA</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="id" name="id" th:value="${id}">
+                    <p>Bạn có chắc là sẽ xóa:  <span style="color:cornflowerblue;font-size: 16px" id="name"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Delete Service</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+</body>
+<script>
+    function prepareDelete(id,name) {
+        document.getElementById("id").value = id;
+        document.getElementById("name").innerText = name;
+    }
+
+    // Lấy đối tượng alert box
+    var alertBox = document.getElementById('alert');
+
+    // Hiển thị alert box
+    alertBox.classList.add('show');
+
+    // Tự động ẩn alert box sau 2 giây
+    setTimeout(function() {
+        alertBox.classList.remove('show');
+    }, 2000);
+
+    // Lấy đối tượng alert box
+    var alertBox1 = document.getElementById('alert1');
+
+    // Hiển thị alert box
+    alertBox1.classList.add('show');
+
+    // Tự động ẩn alert box sau 2 giây
+    setTimeout(function() {
+        alertBox1.classList.remove('show');
+    }, 2000);
+</script>
+</html>

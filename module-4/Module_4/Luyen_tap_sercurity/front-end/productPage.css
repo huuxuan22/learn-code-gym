@@ -1,0 +1,30 @@
+table {
+    width: 80%; /* Thiết lập chiều rộng của bảng */
+    margin: auto; /* Đặt margin tự động để căn giữa theo chiều ngang */
+    font-size: 17px;
+}
+
+/* Để căn giữa theo chiều dọc, bạn cần đặt bảng trong một phần tử container */
+.container {
+    display: flex; /* Sử dụng flexbox để căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    height: 300vh; /* Thiết lập chiều cao của container là 100% chiều cao của cửa sổ trình duyệt */
+}
+a.delete {
+    text-decoration: none; /* Loại bỏ dấu gạch chân */
+    color: inherit; /* Giữ màu sắc của văn bản */
+}
+
+a.delete:hover {
+    color: red; /* Màu sắc khi di chuột qua */
+}
+
+td a.delete i {
+    vertical-align: middle; /* Căn giữa dọc */
+}
+
+td a.delete {
+    display: inline-block; /* Đảm bảo văn bản và biểu tượng nằm trên cùng một hàng */
+    text-decoration: none; /* Loại bỏ gạch chân của liên kết */
+}
