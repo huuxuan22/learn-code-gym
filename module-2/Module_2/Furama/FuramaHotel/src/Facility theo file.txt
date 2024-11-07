@@ -1,0 +1,54 @@
+private static final String FACILITY_PATH_FILE = "\"D:\\Module_2\\Furama\\FuramaHotel\\Facility.txt\"";
+    @Override
+    public ArrayList<Facility> getAll() {
+        ArrayList<String>  stringList = new ArrayList<>();
+        stringList = WriteAndReadFile_txt.readFileTXT(FACILITY_PATH_FILE);
+        ArrayList<Facility> listFacility = new ArrayList<>();
+        String[] array = null;
+        for (String line : stringList){
+            array = line.split(",");
+            if (array[0].contains("idHouse")){//nhaapj lai id
+                //maDichVu+ "," + tenDichVu + "," + dienTichSuDung+","+ ChiPhi + "," + soLuongNguoi +","+kieuThue+tieuChuanPhong +","+ soTang;
+                House house = new House(array[0],array[1],Integer.parseInt(array[2]),Integer.parseInt(array[3]),Integer.parseInt(array[4]),array[5],array[6],Integer.parseInt(array[7]));
+                listFacility.add(house);
+            }else if (array[0].contains("idVilla")){
+                //        return maDichVu+ "," + tenDichVu + "," + dienTichSuDung+","+ ChiPhi + "," + soLuongNguoi +","+kieuThue+tieuChuanPhong +","+ soTang;
+                Villa villa = new Villa(array[0],array[1],Integer.parseInt(array[2]),Integer.parseInt(array[3]),Integer.parseInt(array[4]),array[5],array[6],Integer.parseInt(array[7]),Integer.parseInt(array[8]));
+                listFacility.add(villa);
+            }else {
+                Room room = new Room(array[0],array[1],Integer.parseInt(array[2]),Integer.parseInt(array[3]),Integer.parseInt(array[4]),array[5],array[6]);
+                listFacility.add(room);
+            }
+        }
+        return listFacility;
+    }
+
+
+    @Override
+    public void add(Facility facility) {
+        List<String> listString = new ArrayList<>();
+        listString.add(facility.getInforFacilityToTXT());
+        WriteAndReadFile_txt.WriteArrayListToTXT(FACILITY_PATH_FILE,listString,true);
+    }
+
+    @Override
+    public void update(ArrayList<Facility> listFacility) {
+        List<String> stringList = new ArrayList<>();
+        for (Facility facility : listFacility){
+            stringList.add(facility.getInforFacilityToTXT());
+        }
+        WriteAndReadFile_txt.WriteArrayListToTXT(FACILITY_PATH_FILE,stringList,false);
+    }
+
+
+    @Override
+    public void delete(String id) {
+        ArrayList<Facility> listFacility = getAll();
+        List<String> listString = new ArrayList<>();
+        for (int i=0;i<listFacility.size();i++){
+            if (!(listFacility.get(i).getMaDichVu().equals(id))) {
+                listString.add(listFacility.get(i).getInforFacilityToTXT());
+            }
+        }
+        WriteAndReadFile_txt.WriteArrayListToTXT(FACILITY_PATH_FILE,listString,false);
+    }
