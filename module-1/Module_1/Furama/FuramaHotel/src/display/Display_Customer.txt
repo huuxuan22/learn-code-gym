@@ -1,0 +1,15 @@
+@Override
+    public void display() {
+        ArrayList<Customer> listCustomer = null;
+        try {
+            listCustomer = (ArrayList<Customer>) customerService.getAll();
+        System.out.println("--------------Dannh sách Customer--------------------");
+        for (int i=0;i<listCustomer.size();i++){
+            System.out.println("Customer thứ: "+ i);
+            System.out.println(listCustomer.get(i).toString());
+        }
+        } catch (ParseException e) {
+            System.out.println("Sai ở method display ở trong CustomerService");;
+        }
+        System.out.println("----------------------------------------------------");
+    }

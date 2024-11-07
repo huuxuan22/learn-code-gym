@@ -1,0 +1,17 @@
+@Override
+    public void display() {
+        try {
+            ArrayList<Employee> listCustomer = new ArrayList<>();
+                    listCustomer =  employeeRepository.getAll();
+            System.out.println("--------------Dannh sách Employee--------------------");
+            for (int i = 0; i < listCustomer.size(); i++) {
+                System.out.println("Employee thứ: " + i);
+                System.out.println(listCustomer.get(i).toString());
+
+            }
+            System.out.println("----------------------------------------------------");
+        } catch (ParseException e) {
+            System.out.println("Sai ở getAll ở trong method display ở trong EmployeeServvice");
+            e.getStackTrace();
+        }
+    }
