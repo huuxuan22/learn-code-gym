@@ -1,0 +1,298 @@
+
+<html>
+
+<head>
+    <title>Title</title>
+    <!-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> -->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .col-1 {
+            width: 8.33%;
+        }
+
+        .col-2 {
+            width: 16.66%;
+        }
+
+        .col-3 {
+            width: 25%;
+        }
+
+        .col-4 {
+            width: 33.33%;
+        }
+
+        .col-5 {
+            width: 41.66%;
+        }
+
+        .col-6 {
+            width: 50%;
+        }
+
+        .col-7 {
+            width: 58.33%;
+        }
+
+        .col-8 {
+            width: 66.66%;
+        }
+
+        .col-9 {
+            width: 75%;
+        }
+
+        .col-10 {
+            width: 83.33%;
+        }
+
+        .col-11 {
+            width: 91.66%;
+        }
+
+        .col-12 {
+            width: 100%;
+        }
+
+        #header {
+            background-color: #dbd8e1;
+            padding: 10px;
+        }
+
+        .title {
+
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+            overflow-x: hidden;
+            background: #e8eff7;
+        }
+        .grid-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 20px;
+            margin: 20px 0;
+        }
+        .card-top img {
+            display: block;
+            width: 100%;
+        }
+        .container {
+            width: 95%;
+            margin: auto;
+        }
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px rgb(0 0 0 / 20%);
+        }
+        .card-top {
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            overflow: hidden;
+        }
+        .card-info h2 {
+            font-size: 18px;
+            margin: 10px 0 5px 0;
+        }
+        .date {
+            margin-bottom: 10px;
+        }
+        span,p {
+            font-size: 15px;
+            display: block;
+        }
+        .excerpt {
+            color: #aeaeae;
+        }
+        .flex-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .card-bottom {
+            margin-top: 20px;
+        }
+        .button {
+            text-decoration: unset;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #4e4e4e;
+            width: 80px;
+            text-align: center;
+            font-size: 15px;
+            line-height: 30px;
+            border-radius: 5px;
+            background: #f2f4f6;
+        }
+        .read-more {
+            text-decoration: unset;
+            color: #000;
+            font-weight: 600;
+        }
+        .btn-yellow {
+            background: #ffb91d;
+        }
+        .btn-sky {
+            background: #d2f9fe;
+        }
+        .btn-dpink {
+            background: #e8d3fc;
+        }
+
+
+    </style>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          integrity="sha512-..." crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+<!-- <div id="header">
+    <div class="row">
+       <div class="col-12">
+           <nav class="navbar navbar-expand-lg bg-body-tertiary">
+               <div class="container-fluid">
+                   <a class="navbar-brand" href="#">Account</a>
+                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                           <li class="nav-item">
+                               <a class="nav-link active" aria-current="page" href="#">Giỏ hàng</a>
+                           </li>
+                           <li class="nav-item">
+                               <a class="nav-link" href="#">Link</a>
+                           </li>
+                           <li class="nav-item dropdown">
+                               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                   Dropdown
+                               </a>
+                               <ul class="dropdown-menu">
+                                   <li><a class="dropdown-item" href="#">Action</a></li>
+                                   <li><a class="dropdown-item" href="#">Another action</a></li>
+                                   <li><hr class="dropdown-divider"></li>
+                                   <li><a class="dropdown-item" href="#">Something else here</a></li>
+                               </ul>
+                           </li>
+
+                       </ul>
+                       <form class="d-flex" role="search">
+                           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                           <button class="btn btn-outline-success" type="submit">Search</button>
+                       </form>
+                   </div>
+               </div>
+           </nav>
+       </div>
+    </div>
+</div>
+
+
+</div> -->
+<div id="content">
+    <div class="row">
+        <div class="col-12">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Account</a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Giỏ hàng</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Dropdown
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+ 
+                        </ul>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+     </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-10">
+               <div class="row">
+<!-- <%--                   <c:forEach var="lists" items="${list}" varStatus="status" >--%> -->
+                       <div class="col-4">
+                           <div class=" mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp">
+                               <figure class="mdl-card__media">
+                                   <img src="data:image/jpeg;base64,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" alt="" />
+                               </figure>
+                               <div class="mdl-card__title">
+                                   <h1 class="mdl-card__title-text">Learning Web Design</h1>
+                               </div>
+                               <div class="mdl-card__supporting-text">
+                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam accusamus, consectetur.</p>
+                               </div>
+                               <div class="mdl-card__actions mdl-card--border">
+                                   <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Read More</a>
+                                   <div class="mdl-layout-spacer"></div>
+                                   <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">favorite</i></button>
+                                   <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
+                               </div>
+                           </div>
+                       </div>
+
+   
+    <!--  -->
+<!-- <%--                   </c:forEach>--%> -->
+               </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div id="footer"></div>
+<button aria-label="Decrease" class="suQW3X"><svg enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" class="shopee-svg-icon"><polygon points="4.5 4.5 3.5 4.5 0 4.5 0 5.5 3.5 5.5 4.5 5.5 10 5.5 10 4.5"></polygon></svg></button>
+<input class="suQW3X u00pLG" type="text" role="spinbutton" aria-live="assertive" aria-valuenow="1" value="1">
+<span aria-live="polite" class="Bf9ap6">Số lượng 1</span>
+<button aria-label="Increase" class="suQW3X"><svg enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" class="shopee-svg-icon icon-plus-sign"><polygon points="10 4.5 5.5 4.5 5.5 0 4.5 0 4.5 4.5 0 4.5 0 5.5 4.5 5.5 4.5 10 5.5 10 5.5 5.5 10 5.5"></polygon></svg></button>
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+</body>
+
+</html>
