@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <form class="d-flex" role="search">
+        <input class="form-control me-2" id="valueSearch" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" onclick="search()" id="search" type="submit">Search</button>
+      </form>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên dịch vụ</th>
+                <th>Diện tích</th>
+                <th>Số người tối đa</th>
+                <th>giá cả</th>
+                <th>loại dịch vụ</th>
+                <th>Kiểu thuê</th>
+                <th>Tiêu chuẩn Phòng</th>
+                <th>Mô tien ích khác</th>
+                <th>Diện tích hồ bơi</th>
+                <th>Số tầng</th>
+                <th>Các phí dịch vụ đi kèm</th>
+                <th> Sửa </th>
+                <th> Xóa </th>
+            </tr>
+        </thead>
+        <tbody id="body">
+
+        </tbody>
+    </table>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="id">
+                    <p>bạn có chắc chắn là xóa <span id="name"></span> ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="close" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="remove" class="btn btn-primary">xóa thôi@@</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+        
+
+    <script>
+    
+        $(document).ready(function () {
+            showList();
+            $("#remove").click(() => {
+                let id = $("#id").val();
+                deleteById(id);
+            })
+            $("#search").click(() => {
+                let valueSearchs = $("#valueSearch").val()
+                searchByValueSearch(valueSearchs);
+            })
+        });
+
+        function deleteF(id, name) {
+            $("#id").val(id);
+            $("#name").text(name)
+        }
+
+        function search() {
+            let valueSearch = document.getElementById("valueSearch");
+            $("#valueSearch").val(valueSearch)
+        }
+
+        function searchByValueSearch(valueSearch) {
+            $.ajax ({
+                url: `http://localhost:8080/api/search?name=`+valueSearch, method: 'POST', dataType: 'JSON',
+                success: () => {
+                    showList();
+                }
+            })
+        }
+
+
+        function showList() {
+            $.ajax({
+                url: "http://localhost:8080/api", method: 'GET', dataType: 'JSON',
+                success: function (data) {
+                    let str = []
+                    for (let i = 0; i < data.content.length; i++) {
+                        str.push(`
+                            <tr>
+                                <td>${i + 1}</td>
+                                <td>${data.content[i].name}</td>
+                                <td>${data.content[i].area}</td>
+                                <td>${data.content[i].cost}</td>
+                                <td>${data.content[i].facilityType.name}</td>
+                                <td>${data.content[i].rentType.name}</td>
+                                <td>${data.content[i].peopleMax}</td>
+                                <td>${data.content[i].standardRoom}</td>
+                                <td>${data.content[i].descriptionOtherConvenience}</td>
+                                <td>${data.content[i].poolArea}</td>
+                                <td>${data.content[i].numberOfFloors}</td>
+                                <td>${data.content[i].facilityFree}</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger" onclick="deleteF('${data.content[i].id}','${data.content[i].name}')" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            DELETE
+                                    </button>    
+                                </td>
+                                <td></td>
+                            </tr>
+                        `)
+                    }
+                    document.getElementById("body").innerHTML = str.join();
+                }
+            })
+        }
+
+
+        function deleteById(id) {
+            $.ajax({
+                url: `http://localhost:8080/api/delete/`+id, method: "DELETE",
+                success: () => {
+                    alert("Đã xóa thành công")
+                    showList();
+                    $("#close").click()
+                }
+            })
+        }
+    </script>
+    <script>
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/login}" method="post" th:object="${user}">
+  tên tài khoản: <input type="text" th:field="*{account}" name="account">
+    </br> mật khẩu: <input th:field="*{passWord}" th:name="password" name="text">
+    </br>
+    <label>
+        ghi nhớ tài khoản <input type="checkbox" name="remember-me">
+    </label>
+    </br> <input type="submit" value="chuyển">
+</form>
+</body>
+</html>

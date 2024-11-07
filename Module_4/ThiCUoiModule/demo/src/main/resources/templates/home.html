@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<form th:action="@{/addNew}" method="get">
+    <button type="submit" class="btn btn-primary">Thêm mới dự án</button>
+</form>
+
+<div style="width: 300px">
+    <form class="d-flex" th:action="@{/search}" method="post" role="search" style="with:100px">
+        <input class="form-control me-2" type="search" name="search" id="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Mã dự án</th>
+            <th>Tên doanh nghiệp</th>
+            <th>Tên dự án</th>
+            <th>Kinh phí yêu cầu</th>
+            <th>Mô tả dự án</th>
+            <th> thời gian đăng kí giới thiệu </th>
+            <th>Ngày đăng kí</th>
+            <th> Chi phí</th>
+        </tr>
+    </thead>
+    <tbody th:each="duAn , loop : ${list}">
+    <td th:text="${loop.count}"></td>
+    <td th:text="${duAn.getMaDuAn()}"></td>
+    <td th:text="${duAn.getDoanhNghiep().tenDoanhNghiep}"></td>
+    <td th:text="${duAn.tenDuAn}"></td>
+    <td th:text="${duAn.kinhPhi}"></td>
+    <td th:text="${duAn.moTaDuAn}"></td>
+    <td th:text="${duAn.thoiGianDangKi}"></td>
+    <td th:text="${duAn.ngayDangKi}"></td>
+
+    <td th:if="${duAn.kinhPhi} <= 100000000"
+        th:text="${duAn.thoiGianDangKi} * ${duAn.kinhPhi} * 0.1"></td>
+    <td th:if="${duAn.thoiGianDangKi} >= 100000000 and ${duAn.kinhPhi} <= 500000000"
+        th:text="${duAn.thoiGianDangKi} * ${duAn.thoiGianDangKi} * 0.2"></td>
+    <td th:if="${duAn.kinhPhi} > 500000000"
+        th:text="${duAn.kinhPhi} * ${duAn.thoiGianDangKi} * 0.03"></td>
+<!--    Mã dự án: <span name id="maDuAn"></span> </br>-->
+<!--    Tên Dự Án: <span id="tenDuAn"></span> </br>-->
+<!--    Tên Doanh nghiệp: <span id="tenDoanhNghiep"></span> </br>-->
+<!--    Lĩnh vực: <span id="linhVuc"></span> </br>-->
+<!--    SDT: <span id="sdt"></span> </br>-->
+<!--    Email: <span id="email"></span> </br>-->
+<!--    Kinh phí yêu cầu: <span id="kinhPhi"></span> VND </br>-->
+<!--    Thời giang đăng kí: <span id="thoiGianDangKi"></span> tháng</br>-->
+<!--    ngày Đăng kí:  <span id="ngayDangKi"></span> </br>-->
+<!--    Chi Phí:  <span id="chiPhi"></span> </br>-->
+    <td>
+
+        <button th:attr="onclick=|prepareDelete('${duAn.maDuAn}', '${duAn.tenDuAn}', '${duAn.doanhNghiep.tenDoanhNghiep}', '${duAn.doanhNghiep.linhVuc}', '${duAn.doanhNghiep.soDienThoai}', '${duAn.doanhNghiep.email}', '${duAn.kinhPhi}', '${duAn.thoiGianDangKi}', '${duAn.ngayDangKi}')|"
+
+                type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Chi tiết
+        </button>
+
+    </td>
+    </tbody>
+</table>
+
+<nav aria-label="Page navigation" th:if="${!list.isEmpty()}">
+    <ul class="pagination">
+        <li class="page-item" th:classappend="${currentPage == 0 ? 'disabled' : ''}">
+            <a class="page-link" th:href="@{/(page=0)}">First</a>
+        </li>
+        <li class="page-item" th:classappend="${currentPage == 0 ? 'disabled' : ''}">
+            <a class="page-link" th:href="@{/(page=${currentPage - 1})}">Previous</a>
+        </li>
+        <li class="page-item" th:each="i : ${#numbers.sequence(0, list.totalPages -1)}"
+            th:classappend="${currentPage == i ? 'active' : ''}">
+            <a class="page-link" th:href="@{/(page=${i},valueSearch=${searchValue})}" th:text="${i + 1}"></a>
+        </li>
+        <li class="page-item" th:classappend="${currentPage == list.totalPages - 1 ? 'disabled' : ''}">
+            <a class="page-link" th:href="@{/(page=${currentPage + 1})}">Next</a>
+        </li>
+        <li class="page-item" th:classappend="${currentPage == list.totalPages - 1 ? 'disabled' : ''}">
+            <a class="page-link" th:href="@{/(page=${list.totalPages - 1})}">Last</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Mã dự án: <span name id="maDuAn"></span> </br>
+                        Tên Dự Án: <span id="tenDuAn"></span> </br>
+                        Tên Doanh nghiệp: <span id="tenDoanhNghiep"></span> </br>
+                        Lĩnh vực: <span id="linhVuc"></span> </br>
+                        SDT: <span id="sdt"></span> </br>
+                        Email: <span id="email"></span> </br>
+                        Kinh phí yêu cầu: <span id="kinhPhi"></span> VND </br>
+                        Thời giang đăng kí: <span id="thoiGianDangKi"></span> tháng</br>
+                        ngày Đăng kí:  <span id="ngayDangKi"></span> </br>
+                        Chi Phí:  <span id="chiPhi"></span> </br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+    </div>
+</div>
+
+</body>
+<script>
+    function prepareDelete(maDuAn, tenDuAn, tenDoanhNghiep, linhVuc, sdt, email, kinhPhi, thoiGianDangKi, ngayDangKi) {
+        document.getElementById("maDuAn").innerText = maDuAn
+        document.getElementById("tenDuAn").innerText = tenDuAn
+        document.getElementById("tenDoanhNghiep").innerText = tenDoanhNghiep
+        document.getElementById("linhVuc").innerText = linhVuc
+        document.getElementById("sdt").innerText = sdt
+        document.getElementById("email").innerText = email
+        document.getElementById("kinhPhi").innerText = kinhPhi
+        document.getElementById("thoiGianDangKi").innerText = thoiGianDangKi
+        document.getElementById("ngayDangKi").innerText = ngayDangKi
+    }
+</script>
+</html>

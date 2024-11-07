@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/}" class="btn btn-primary">Trở về trang trước </a>
+<form th:Object="${product}" th:action="@{/updateProduct}" method="post">
+  <div class="mb-3" style="width: 300px">
+    id:
+    </br>
+    <input  type="text"  th:field="*{id}">
+    </br>
+    name:
+    <input  type="text" th:field="*{name}">
+    </br>
+    Mô tả:
+    <input  type="text" th:field="*{moTa}">
+  </div>
+  <button type="submit">Lưu thôi nào </button>
+</form>
+</body>
+</html>
